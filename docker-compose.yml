@@ -1,16 +1,5 @@
 services:
 
-  app:
-    container_name: taskmanager
-    image: willmear/taskmanager:latest
-    ports:
-      - "8080:8080"
-    networks:
-      - app
-    depends_on:
-      - postgres
-    restart: unless-stopped
-  
   postgres:
     container_name: postgres
     image: postgres
@@ -24,7 +13,6 @@ services:
       - "5432:5432"
     networks:
       - postgres
-      - app
     restart: unless-stopped
 
   pgadmin:
@@ -44,8 +32,6 @@ services:
   
 networks:
   postgres:
-    driver: bridge
-  app:
     driver: bridge
 
 
