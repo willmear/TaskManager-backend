@@ -15,6 +15,6 @@ ARG DEPENDENCY=/Taskmanager/taskmanager/target/dependency
 COPY --from=build ${DEPENDENCY}/BOOT-INF/lib /app/lib
 COPY --from=build ${DEPENDENCY}/META-INF /app/META-INF
 COPY --from=build ${DEPENDENCY}/BOOT-INF/classes /app
-EXPOSE 80
+# EXPOSE 80
 CMD ["./mvnw", "spring-boot:run"]
 ENTRYPOINT [ "java", "-cp", "app:app/lib/*", "com.willmear.taskmanager.TaskmanagerApplication"]
