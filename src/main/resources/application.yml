@@ -1,16 +1,16 @@
 server:
-  port: 80
+  port: 5000
 spring:
   application:
     name: taskmanager
   datasource:
-    driver-class-name: org.postgresql.Driver
-    password: will
-    url: jdbc:postgresql://localhost:5432/taskmanager
-    username: will
+    # driver-class-name: org.postgresql.Driver
+    password: postgres
+    url: jdbc:postgresql://taskmanager.cygo0fqrcuqz.eu-west-2.rds.amazonaws.com:5432/taskmanager
+    username: postgres
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
