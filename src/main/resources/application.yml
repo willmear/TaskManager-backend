@@ -5,9 +5,9 @@ spring:
     name: taskmanager
   datasource:
     driver-class-name: org.postgresql.Driver
+    username: postgres
     password: postgres
     url: jdbc:postgresql://taskmanager.cygo0fqrcuqz.eu-west-2.rds.amazonaws.com:5432/taskmanager
-    username: postgres
   jpa:
     hibernate:
       ddl-auto: create
