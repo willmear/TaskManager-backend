@@ -10,7 +10,7 @@ spring:
     url: jdbc:postgresql://taskmanager.cygo0fqrcuqz.eu-west-2.rds.amazonaws.com:5432/taskmanager
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
