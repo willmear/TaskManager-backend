@@ -3,11 +3,15 @@ package com.willmear.taskmanager.security.auth;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.willmear.taskmanager.repository.UserRepository;
 
 import java.io.IOException;
 
@@ -16,11 +20,15 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class AuthenticationController {
     private final AuthenticationService service;
+    private final UserRepository userRepository;
 
     @PostMapping("/register")
     public ResponseEntity<AuthenticationResponse> register(
             @RequestBody RegisterRequest request
     ) {
+        if (userRepository.findByEmail(request.getEmail()).isPresent())
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+
         return ResponseEntity.ok(service.register(request));
     }
     @PostMapping("/authenticate")
