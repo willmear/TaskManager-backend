@@ -26,8 +26,9 @@ public class AuthenticationController {
     public ResponseEntity<AuthenticationResponse> register(
             @RequestBody RegisterRequest request
     ) {
-        if (userRepository.findByEmail(request.getEmail()).isPresent())
+        if (userRepository.findByEmail(request.getEmail()).isPresent()) {
             return ResponseEntity.status(HttpStatus.CONFLICT).build();
+        }
 
         return ResponseEntity.ok(service.register(request));
     }
