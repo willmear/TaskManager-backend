@@ -43,4 +43,9 @@ public class TeamService {
     public Team getTeamById(Integer id) {
         return teamRepository.findById(id).orElse(null);
     }
+
+    public List<User> getTeamMembers(Integer id) {
+
+        return teamRepository.findMembersById(id);
+    }
 }

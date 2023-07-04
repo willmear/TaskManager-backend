@@ -12,6 +12,8 @@ import com.willmear.taskmanager.resource.TaskPostRequest;
 import com.willmear.taskmanager.resource.TaskRequest;
 
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +30,10 @@ public class TaskService {
     private final CalendarEventRepository calendarRepository;
 
     public ResponseEntity<Task> createTask(TaskRequest task) {
+
+        if (!userRepository.findByEmail(task.getAssignee()).isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
 
         Task newTask = Task.builder()
                 .title(task.getTitle())

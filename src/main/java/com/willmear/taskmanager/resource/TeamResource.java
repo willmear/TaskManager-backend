@@ -56,4 +56,9 @@ public class TeamResource {
         return teamService.getTeamById(id);
     }
 
+    @GetMapping("/{id}/members")
+    public List<User> getTeamMembers(@PathVariable Integer id) {
+        return teamService.getTeamMembers(id);
+    }
+
 }
